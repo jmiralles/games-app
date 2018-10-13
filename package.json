@@ -1,7 +1,7 @@
 {
-  "name": "top-apps",
+  "name": "games-app",
   "version": "1.0.0",
-  "description": "showing top apps",
+  "description": "manage your favorite games",
   "main": "index.html",
   "scripts": {
     "webpack": "webpack",
@@ -9,33 +9,33 @@
     "test": "jest"
   },
   "dependencies": {
-    "babel-polyfill": "6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-polyfill": "6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "0.28.4",
     "jest": "20.0.4",
+    "navigo": "^7.1.2",
     "node-sass": "4.5.3",
-    "normalize.css": "7.0.0",
-    "style-loader": "0.18.2",
     "sass-loader": "6.0.6",
+    "style-loader": "0.18.2",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmiralles/top-host-app.git"
+    "url": "git+https://github.com/jmiralles/games-app.git"
   },
-  "author": "",
+  "author": "jmirallespaez@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jmiralles/top-host-app/issues"
+    "url": "https://github.com/jmiralles/games-app/issues"
   },
-  "homepage": "https://github.com/jmiralles/top-host-app#readme",
+  "homepage": "https://github.com/jmiralles/games-app#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
