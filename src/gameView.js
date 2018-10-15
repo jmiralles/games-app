@@ -1,18 +1,20 @@
-import titleHtml from "./components/title";
-import portFolioButton from "./components/portfolioButton";
 import {
   qs,
   $on
 } from "./helpers";
+import titleHtml from "./components/title";
+import portfolioButton from "./components/portfolioButton";
+import breadcrumb from "./components/breadcrumb";
 
 const gamesPage = async (store, params) => {
   const $htmlContent = qs("#appContent");
+  const updatePortfolioId = "updatePortfolio";
   const {
-    id
+    shortName
   } = params;
 
   const state = {
-    game: await store.getGameByName(id)
+    game: await store.getGameByName(shortName)
   }
 
   const addToPortfolio = () => {
@@ -34,34 +36,30 @@ const gamesPage = async (store, params) => {
   }
 
   const updateGame = async () => {
-    state.game = await store.getGameByName(id);
+    state.game = await store.getGameByName(shortName);
     render(state.game);
   }
 
   const renderPage = game => {
-    console.log(game)
-
     const titleElement = titleHtml(game.name);
     return `<div>
-              <a href="/">Back</a>
+              ${breadcrumb()}
               ${titleElement}
               <div id="appList">
                <img src="http://royal1.midasplayer.com/images/games/${
                  game.short
                }/${game.short}_170x80.gif" />
-               ${portFolioButton(game)}
+               ${portfolioButton(game)}
               </div>
             </div>`;
   };
 
   const render = (game) => {
     $htmlContent.innerHTML = renderPage(game);
-    $on(qs(`#updatePortfolio`), "click", updatePortfolio);
+    $on(qs(`#${updatePortfolioId}`), "click", updatePortfolio);
   }
 
   render(state.game);
-
-
 };
 
 export default gamesPage;

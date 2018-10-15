@@ -1,9 +1,8 @@
 const portfolioButton = game => {
-    console.log("inside", game)
     if (!game.portfolio) {
-        return `<a id="updatePortfolio" class="button is-primary">Add to my collection</a>`;
+        return `<a id="updatePortfolio" class="button is-primary">Add to my portfolio</a>`;
     } else {
-        return `<a id="updatePortfolio" class="button is-warning">Remove my collection</a>`;
+        return `<a id="updatePortfolio" class="button is-warning">Remove from my portfolio</a>`;
     }
 };
 

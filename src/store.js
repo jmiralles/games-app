@@ -48,7 +48,7 @@ export default class Store {
         game.portfolio = val;
       }
       return game;
-    })
+    });
   }
 
   addGameToPortfolio(shortName) {
