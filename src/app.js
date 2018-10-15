@@ -1,13 +1,13 @@
 import HomePage from "./home";
+import GamesPage from "./games";
 import PortfolioPage from "./portfolio";
-import Navigo from "navigo";
+import Store from "./store";
+import page from "page";
 
-const router = new Navigo();
+// Init Store
+const store = new Store();
 
-router
-  .on({
-    "/": HomePage,
-    portfolio: PortfolioPage,
-    "*": HomePage
-  })
-  .resolve();
+// Router
+page("/games/:id", context => GamesPage(store, context.params));
+page("/", () => HomePage(store));
+page("/portfolio", () => PortfolioPage());
