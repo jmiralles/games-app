@@ -1,5 +1,5 @@
 const title = title => {
-  return `<h2>${title}</h2>`;
+  return `<h1 class="title">${title}</h1>`;
 };
 
 export default title;
