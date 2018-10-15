@@ -6,7 +6,8 @@
   "scripts": {
     "webpack": "webpack",
     "start": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",

@@ -39,7 +39,9 @@ export default class Store {
   }
 
   getGameByName(shortName) {
-    return this.fetch().then(() => this.games.filter(item => item.short === shortName)[0]);
+    return this.fetch().then(
+      () => this.games.filter(item => item.short === shortName)[0]
+    );
   }
 
   changePortfolio(shortName, val) {

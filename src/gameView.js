@@ -1,31 +1,25 @@
-import {
-  qs,
-  $on
-} from "./helpers";
-import titleHtml from "./components/title";
+import { qs, $on } from "./helpers";
 import portfolioButton from "./components/portfolioButton";
 import breadcrumb from "./components/breadcrumb";
 
 const gamesPage = async (store, params) => {
   const $htmlContent = qs("#appContent");
   const updatePortfolioId = "updatePortfolio";
-  const {
-    shortName
-  } = params;
+  const { short } = params;
 
-  const state = {
-    game: await store.getGameByName(shortName)
-  }
+  var state = {
+    game: await store.getGameByName(short)
+  };
 
   const addToPortfolio = () => {
     store.addGameToPortfolio(state.game.short);
-    updateGame();
-  }
+    updateGame(state.game.short);
+  };
 
   const removeFromPortfolio = () => {
     store.removeGameFromPortfolio(state.game.short);
-    updateGame();
-  }
+    updateGame(state.game.short);
+  };
 
   const updatePortfolio = () => {
     if (!state.game.portfolio) {
@@ -33,31 +27,40 @@ const gamesPage = async (store, params) => {
     } else {
       removeFromPortfolio();
     }
-  }
+  };
 
-  const updateGame = async () => {
+  const updateGame = async shortName => {
     state.game = await store.getGameByName(shortName);
     render(state.game);
-  }
+  };
 
   const renderPage = game => {
-    const titleElement = titleHtml(game.name);
+    const imageSrc = `http://royal1.midasplayer.com/images/games/${
+      game.short
+    }/tournamentPage/${game.short}_764x260.jpg`;
     return `<div>
-              ${breadcrumb()}
-              ${titleElement}
-              <div id="appList">
-               <img src="http://royal1.midasplayer.com/images/games/${
-                 game.short
-               }/${game.short}_170x80.gif" />
-               ${portfolioButton(game)}
-              </div>
+            ${breadcrumb(game.name)}
+              <section class="hero is-medium is-light">
+                <div class="hero-body">
+                  <div class="container">
+                    <img src="${imageSrc}" alt="${game.name}">
+                    <h2 class="title">
+                      ${game.name}
+                    </h2>
+                    <p class="buttons">
+                      ${portfolioButton(game)}
+                      <a class="button is-primary">Play!</a>
+                    </p>
+                  </div>
+                </div>
+              </section>
             </div>`;
   };
 
-  const render = (game) => {
+  const render = game => {
     $htmlContent.innerHTML = renderPage(game);
     $on(qs(`#${updatePortfolioId}`), "click", updatePortfolio);
-  }
+  };
 
   render(state.game);
 };

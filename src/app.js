@@ -8,19 +8,23 @@ import "./styles/styles.scss";
 const store = new Store();
 
 // Router
-page("/games/:id", context => GameView(store, context.params));
-page("/", () => GameListView({
+page("/games/:short", context => GameView(store, context.params));
+page("/", () =>
+  GameListView({
     store,
     filterBy: null,
     title: "All Games"
-}));
-page("/portfolio", () => GameListView({
+  })
+);
+page("/portfolio", () =>
+  GameListView({
     store,
     filterBy: {
-        portfolio: true
+      portfolio: true
     },
     title: "Portfolio Games"
-}));
-page()
+  })
+);
+page();
 
 // add 404
