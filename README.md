@@ -10,6 +10,7 @@ TODO:
 - Replace Store state manager with a functional version
 - Use lit-html for templating
 - Add more test to cover search and all rendering
+- Save state in localsorage/firebase
 
 ## To run on local
 ```
